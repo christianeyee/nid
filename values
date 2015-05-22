@@ -86,3 +86,104 @@ diff_srv_rate
 
 srv_diff_host_rate
 [0.56, 0.0, 0.25, 0.82, 0.23, 0.04, 0.95, 0.74, 0.84, 0.88, 0.97, 0.2, 0.83, 0.86, 0.79, 0.52, 0.4, 0.6, 0.24, 0.08, 0.65, 0.42, 0.13, 0.44, 0.73, 0.89, 0.5, 0.28, 0.96, 0.15, 0.02, 0.91, 0.78, 1.0, 0.14, 0.3, 0.87, 0.92, 0.51, 0.01, 0.93, 0.09, 0.69, 0.26, 0.21, 0.8, 0.22, 0.72, 0.63, 0.58, 0.17, 0.99, 0.59, 0.1, 0.06, 0.19, 0.7, 0.81, 0.32, 0.57, 0.38, 0.12, 0.31, 0.33, 0.16, 0.85, 0.54, 0.61, 0.34, 0.77, 0.05, 0.03, 0.35, 0.75, 0.64, 0.71, 0.36, 0.98, 0.29, 0.9, 0.55, 0.18, 0.68, 0.27, 0.94, 0.11, 0.62, 0.67, 0.76, 0.07, 0.53, 0.66]
+
+
+// max values
+duration
+58329
+
+protocol
+
+service
+
+src_bytes
+693375640
+
+dst_bytes
+5155468
+
+land
+
+wrong_fragment
+3
+
+urgent
+3
+
+hot
+3
+
+num_failed_logins
+5
+
+logged_in
+
+root_shell
+1
+
+su_attempted
+2
+
+num_root
+993
+
+num_file_creations
+28
+
+num_shells
+2
+
+num_access_files
+8
+
+num_outbound_cmds
+0
+
+is_host_login
+
+is_guest_login
+
+count
+511
+
+srv_count
+511
+
+serror_rate
+
+srv_serror_rate
+
+rerror_rate
+
+srv_rerror_rate
+
+same_srv_rate
+
+diff_srv_rate
+
+srv_diff_host_rate
+
+classification
+	- back
+	- buffer_overflow
+	- ftp_write
+	- guess_passwd
+	- imap
+	- ipsweep
+	- land
+	- loadmodule
+	- multihop
+	- neptune
+	- nmap
+	- normal
+	- perl
+	- phf
+	- pod
+	- portsweep
+	- rootkit
+	- satan
+	- smurf
+	- spy
+	- teardrop
+	- warezclient
+	- warezmaster

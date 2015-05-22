@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.HashSet;
 
 public class Mapper {
@@ -72,118 +73,134 @@ public class Mapper {
 	public static void printAll() {
 		System.out.println();
 		System.out.println("duration");
-		System.out.println(duration);
+		//System.out.println(duration);
+		System.out.println(Collections.max(duration));
 
 		System.out.println();
 		System.out.println("protocol");
-		System.out.println(protocol);
+		//System.out.println(protocol);
 
 		System.out.println();
 		System.out.println("service");
-		System.out.println(flag);
+		//System.out.println(flag);
 
 		System.out.println();
 		System.out.println("src_bytes");
-		System.out.println(src_bytes);
+		//System.out.println(src_bytes);
+		System.out.println(Collections.max(src_bytes));
 
 		System.out.println();
 		System.out.println("dst_bytes");
-		System.out.println(dst_bytes);
+		//System.out.println(dst_bytes);
+		System.out.println(Collections.max(dst_bytes));
 
 		System.out.println();
 		System.out.println("land");
-		System.out.println(land);
+		//System.out.println(land);
 
 		System.out.println();
 		System.out.println("wrong_fragment");
-		System.out.println(wrong_fragment);
+		//System.out.println(wrong_fragment);
+		System.out.println(Collections.max(wrong_fragment));
 
 		System.out.println();
 		System.out.println("urgent");
-		System.out.println(urgent);
+		//System.out.println(urgent);
+		System.out.println(Collections.max(urgent));
 
 		System.out.println();
 		System.out.println("hot");
-		System.out.println(hot);
+		//System.out.println(hot);
+		System.out.println(Collections.max(urgent));
 
 		System.out.println();
 		System.out.println("num_failed_logins");
-		System.out.println(num_failed_logins);
+		//System.out.println(num_failed_logins);
+		System.out.println(Collections.max(num_failed_logins));
 
 		System.out.println();
 		System.out.println("logged_in");
-		System.out.println(num_compromised);
+		//System.out.println(num_compromised);
 
 		System.out.println();
 		System.out.println("root_shell");
-		System.out.println(root_shell);
+		//System.out.println(root_shell);
+		System.out.println(Collections.max(root_shell));
 
 		System.out.println();
 		System.out.println("su_attempted");
-		System.out.println(su_attempted);
+		//System.out.println(su_attempted);
+		System.out.println(Collections.max(su_attempted));
 
 		System.out.println();
 		System.out.println("num_root");
-		System.out.println(num_root);
+		//System.out.println(num_root);
+		System.out.println(Collections.max(num_root));
 
 		System.out.println();
 		System.out.println("num_file_creations");
-		System.out.println(num_file_creations);
+		//System.out.println(num_file_creations);
+		System.out.println(Collections.max(num_file_creations));
 
 		System.out.println();
 		System.out.println("num_shells");
-		System.out.println(num_shells);
+		//System.out.println(num_shells);
+		System.out.println(Collections.max(num_shells));
 
 		System.out.println();
 		System.out.println("num_access_files");
-		System.out.println(num_access_files);
+		//System.out.println(num_access_files);
+		System.out.println(Collections.max(num_access_files));
 
 		System.out.println();
 		System.out.println("num_outbound_cmds");
-		System.out.println(num_outbound_cmds);
+		//System.out.println(num_outbound_cmds);
+		System.out.println(Collections.max(num_outbound_cmds));
 
 		System.out.println();
 		System.out.println("is_host_login");
-		System.out.println(is_host_login);
+		//System.out.println(is_host_login);
 
 		System.out.println();
 		System.out.println("is_guest_login");
-		System.out.println(is_guest_login);
+		//System.out.println(is_guest_login);
 
 		System.out.println();
 		System.out.println("count");
-		System.out.println(count);
+		//System.out.println(count);
+		System.out.println(Collections.max(count));
 
 		System.out.println();
 		System.out.println("srv_count");
-		System.out.println(srv_count);
+		//System.out.println(srv_count);
+		System.out.println(Collections.max(srv_count));
 
 		System.out.println();
 		System.out.println("serror_rate");
-		System.out.println(serror_rate);
+		//System.out.println(serror_rate);
 
 		System.out.println();
 		System.out.println("srv_serror_rate");
-		System.out.println(srv_serror_rate);
+		//System.out.println(srv_serror_rate);
 
 		System.out.println();
 		System.out.println("rerror_rate");
-		System.out.println(rerror_rate);
+		//System.out.println(rerror_rate);
 
 		System.out.println();
 		System.out.println("srv_rerror_rate");
-		System.out.println(srv_rerror_rate);
+		//System.out.println(srv_rerror_rate);
 
 		System.out.println();
 		System.out.println("same_srv_rate");
-		System.out.println(serror_rate);
+		//System.out.println(serror_rate);
 
 		System.out.println();
 		System.out.println("diff_srv_rate");
-		System.out.println(serror_rate);
+		//System.out.println(serror_rate);
 
 		System.out.println();
 		System.out.println("srv_diff_host_rate");
-		System.out.println(serror_rate);
+		//System.out.println(serror_rate);
 	}
 }

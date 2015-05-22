@@ -1,3 +1,5 @@
+# guides on needed queries
+
 /*
 
 For the probability:
