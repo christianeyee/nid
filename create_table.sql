@@ -1,4 +1,4 @@
-# creates table 'dataset'
+-- creates table 'dataset'
 CREATE TABLE dataset (
 	duration integer, 
 	protocol varchar(10),

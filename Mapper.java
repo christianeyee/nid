@@ -68,6 +68,15 @@ public class Mapper {
 		same_srv_rate.add(node.same_srv_rate);
 		diff_srv_rate.add(node.diff_srv_rate);
 		srv_diff_host_rate.add(node.srv_diff_host_rate);
+		classification.add(node.classification);
+	}
+
+	public static HashSet<String> getClassifications() {
+		return classification;
+	}
+
+	public static HashSet<String> getProtocols() {
+		return protocol;
 	}
 
 	public static void printAll() {

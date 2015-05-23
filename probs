@@ -1,0 +1,60 @@
+# list of needed probabilities
+
+/*
+
+For the probability:
+P(A|B) = P(A&B)/P(B)
+We need for each value of A and B:
+1. count records with A and B
+2. count records with B only
+Example:
+P(protocol_type='tcp' | logged_in='1')
+P(protocol_type='udp' | logged_in='1')
+P(protocol_type='icmp' | logged_in='1')
+P(protocol_type='tcp' | logged_in='0')
+P(protocol_type='udp' | logged_in='0')
+P(protocol_type='icmp' | logged_in='0')
+
+*/
+
+1. classification - OK
+- classification | srv_diff_host_rate
+- classification | src_bytes
+
+2. protocol_type - OK
+- protocol_type | classification
+
+3. src_bytes - OK
+- src_bytes | srv_diff_host_rate
+
+4. dst_bytes - OK
+- dst_bytes | classification
+
+5. count - OK
+- count | srv_count
+- count | same_srv_rate
+
+6. srv_count - OK
+- srv_count | srv_diff_host_rate
+- srv_count | dst_bytes
+
+7. serror_rate - OK
+- serror_rate | rerror_rate
+
+8. srv_serror_rate - OK
+- srv_serror_rate | serror_rate
+
+9. rerror_rate - OK
+- rerror_rate | src_bytes
+
+10. srv_rerror_rate - OK
+- srv_serror_rate | rerror_rate
+- srv_rerror_rate | count
+- srv_rerror_rate | srv_serror_rate
+
+11. same_srv_rate - OK
+- same_srv_rate | dst_bytes
+
+12. diff_srv_rate - OK
+- diff_srv_rate | same_srv_rate
+- diff_srv_rate | classification

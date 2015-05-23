@@ -22,11 +22,22 @@ public class Main {
 		String line;
 
 		try(BufferedReader br = new BufferedReader(new FileReader(filename))) {
-			while((line = br.readLine()) != null) {
-				buildNode(line);
-			}
-			//Mapper.printAll();
-			insertAll();
+			//while((line = br.readLine()) != null) {
+			//	buildNode(line);
+			//}
+			//insertAll();
+			Classification.getStats();
+			Count.getStats();
+			DiffSrvRate.getStats();
+			DstBytes.getStats();
+			Protocol.getStats();
+			RerrorRate.getStats();
+			SameSrvRate.getStats();
+			SerrorRate.getStats();
+			SrcBytes.getStats();
+			SrvCount.getStats();
+			SrvRerrorRate.getStats();
+			SrvSerrorRate.getStats();
 		}
 		catch(Exception e) { e.printStackTrace(); }
 	}
