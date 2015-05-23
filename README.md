@@ -19,7 +19,7 @@ A DoS Attacks Detection System using a Bayesian Network.
 
 ## Build network
 1. Download [SamIam](http://reasoning.cs.ucla.edu/samiam/index.php?s=).
-2. Create Bayesian network from computed probabilities.
+2. Create Bayesian network from computed probabilities. (See `net.png`)
 
 ## Query
 Test the Bayesian Network using data in the `test` file.
