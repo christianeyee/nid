@@ -8,6 +8,18 @@ public class Helper {
 	private static ArrayList<String> protocols;
 
 
+	public static boolean isValid(String classification) {
+		if (classification.equals("normal.") || 
+			classification.equals("neptune.") ||
+			classification.equals("back.") ||
+			classification.equals("smurf.")) 
+		{
+			return true;
+		}
+
+		return false;
+	}
+
 	public static void write(Writer writer, String line) {
 		try {
 			writer.write("\n");
