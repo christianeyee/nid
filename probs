@@ -4,6 +4,7 @@
 
 For the probability:
 P(A|B) = P(A&B)/P(B)
+
 We need for each value of A and B:
 1. count records with A and B
 2. count records with B only
@@ -14,6 +15,9 @@ P(protocol_type='icmp' | logged_in='1')
 P(protocol_type='tcp' | logged_in='0')
 P(protocol_type='udp' | logged_in='0')
 P(protocol_type='icmp' | logged_in='0')
+
+P(A|B, C, D, ...) = P(A|U)
+where U = B, C, D, ...
 
 */
 
