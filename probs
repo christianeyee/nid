@@ -1,9 +1,8 @@
 # list of needed probabilities
-
-/*
+# reference: http://www.bayesnets.com/
 
 For the probability:
-P(A|B) = P(A&B)/P(B)
+P(A|B) = P(A & B) / P(B)
 
 We need for each value of A and B:
 1. count records with A and B
@@ -17,48 +16,235 @@ P(protocol_type='udp' | logged_in='0')
 P(protocol_type='icmp' | logged_in='0')
 
 P(A|B, C, D, ...) = P(A|U)
-where U = B, C, D, ...
+where U = B & C & D &...
 
-*/
+P(U) = count(B & C & D &...)
+	- NO NEED TO DIVIDE BY ANYTHING
+	- NO QUERIES FOR THESE GENERATED
+P(A|U) = count(A & B & C & D &...)
+	- NO NEED TO DIVIDE BY ANYTHING
+	- QUERIES FOR THESE ALREADY GENERATED
 
-1. classification - OK
-- classification | srv_diff_host_rate
-- classification | src_bytes
 
-2. protocol_type - OK
-- protocol_type | classification
+1. classiffication
+	a. srv_diff_host_rate
+		P(smurf|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
+		P(smurf|srv_diff_host_rate >= 0 and srv_diff_host_rate < 1)
+		P(smurf|srv_diif_host_rate = 0)
+		P(smurf|srv_diif_host_rate = 1)
+		P(normal|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
+		P(normal|srv_diff_host_rate >= 0 and srv_diff_host_rate < 1)
+		P(normal|srv_diif_host_rate = 0)
+		P(normal|srv_diif_host_rate = 1)
+		P(neptune|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
+		P(neptune|srv_diff_host_rate >= 0 and srv_diff_host_rate < 1)
+		P(neptune|srv_diif_host_rate = 0)
+		P(neptune|srv_diif_host_rate = 1)
+		P(back|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
+		P(back|srv_diff_host_rate >= 0 and srv_diff_host_rate < 1)
+		P(back|srv_diif_host_rate = 0)
+		P(back|srv_diif_host_rate = 1)
+	b. src_bytes
+		P(smurf|src_bytes = 0)
+		P(smurf|src_bytes > 0)
+		P(normal|src_bytes = 0)
+		P(normal|src_bytes > 0)
+		P(neptune|src_bytes = 0)
+		P(neptune|src_bytes > 0)
+		P(back|src_bytes = 0)
+		P(back|src_bytes > 0)
+2. protocol
+	a. classification
+		P(icmp|smurf)
+		P(icmp|normal)
+		P(icmp|neptune)
+		P(icmp|back)
+		P(tcp|smurf)
+		P(tcp|normal)
+		P(tcp|neptune)
+		P(tcp|back)
+		P(udp|smurf)
+		P(udp|normal)
+		P(udp|neptune)
+		P(udp|back)
+3. src_bytes
+	a. srv_diff_host_rate
+		P(src_bytes = 0|srv_diff_host_rate > 0 and srv_diff_host_rate < 0.5)
+		P(src_bytes = 0|srv_diff_host_rate >= 0.5 and srv_diff_host_rate < 1)
+		P(src_bytes = 0|srv_diff_host_rate = 0)
+		P(src_bytes = 0|srv_diff_host_rate = 1)
+		P(src_bytes > 0|srv_diff_host_rate > 0 and srv_diff_host_rate < 0.5)
+		P(src_bytes > 0|srv_diff_host_rate >= 0.5 and srv_diff_host_rate < 1)
+		P(src_bytes > 0|srv_diff_host_rate = 0)
+		P(src_bytes > 0|srv_diff_host_rate = 1)
+4. dst_bytes
+	a. classification
+		P(dst_bytes = 0|smurf)
+		P(dst_bytes = 0|normal)
+		P(dst_bytes = 0|neptune)
+		P(dst_bytes = 0|back)
+		P(dst_bytes > 0|smurf)
+		P(dst_bytes > 0|normal)
+		P(dst_bytes > 0|neptune)
+		P(dst_bytes > 0|back)
+5. count
+	a. srv_count
+		P(count > 0 and count <= 10|srv_count > 0 and srv_count <= 10)
+		P(count > 0 and count <= 10|srv_count > 10 and srv_count <= 20)
+		P(count > 0 and count <= 10|srv_count > 20 and srv_count <= 30)
+		P(count > 0 and count <= 10|srv_count > 30 and srv_count <= 40)
+		P(count > 0 and count <= 10|srv_count > 40 and srv_count <= 50)
+		P(count > 0 and count <= 10|srv_count > 50 and srv_count <= 60)
+		P(count > 0 and count <= 10|srv_count > 60 and srv_count <= 70)
+		P(count > 0 and count <= 10|srv_count > 70 and srv_count <= 80)
+		P(count > 0 and count <= 10|srv_count > 80 and srv_count <= 90)
+		P(count > 0 and count <= 10|srv_count = 0)
+		P(count > 0 and count <= 10|srv_count > 100)
+		P(count >10 and count <= 10|srv_count > 0 and srv_count <= 10)
+		P(count > 10 and count <= 20|srv_count > 10 and srv_count <= 20)
+		P(count > 10 and count <= 20|srv_count > 20 and srv_count <= 30)
+		P(count > 10 and count <= 20|srv_count > 30 and srv_count <= 40)
+		P(count > 10 and count <= 20|srv_count > 40 and srv_count <= 50)
+		P(count > 10 and count <= 20|srv_count > 50 and srv_count <= 60)
+		P(count > 10 and count <= 20|srv_count > 60 and srv_count <= 70)
+		P(count > 10 and count <= 20|srv_count > 70 and srv_count <= 80)
+		P(count > 10 and count <= 20|srv_count > 80 and srv_count <= 90)
+		P(count > 10 and count <= 20|srv_count = 0)
+		P(count > 10 and count <= 20|srv_count > 100)
+		P(count > 20 and count <= 30|srv_count > 0 and srv_count <= 10)
+		P(count > 20 and count <= 30|srv_count > 10 and srv_count <= 20)
+		P(count > 20 and count <= 30|srv_count > 20 and srv_count <= 30)
+		P(count > 20 and count <= 30|srv_count > 30 and srv_count <= 40)
+		P(count > 20 and count <= 30|srv_count > 40 and srv_count <= 50)
+		P(count > 20 and count <= 30|srv_count > 50 and srv_count <= 60)
+		P(count > 20 and count <= 30|srv_count > 60 and srv_count <= 70)
+		P(count > 20 and count <= 30|srv_count > 70 and srv_count <= 80)
+		P(count > 20 and count <= 30|srv_count > 80 and srv_count <= 90)
+		P(count > 20 and count <= 30|srv_count = 0)
+		P(count > 20 and count <= 30|srv_count > 100)
+		P(count > 30 and count <= 40|srv_count > 0 and srv_count <= 10)
+		P(count > 30 and count <= 40|srv_count > 10 and srv_count <= 20)
+		P(count > 30 and count <= 40|srv_count > 20 and srv_count <= 30)
+		P(count > 30 and count <= 40|srv_count > 30 and srv_count <= 40)
+		P(count > 30 and count <= 40|srv_count > 40 and srv_count <= 50)
+		P(count > 30 and count <= 40|srv_count > 50 and srv_count <= 60)
+		P(count > 30 and count <= 40|srv_count > 60 and srv_count <= 70)
+		P(count > 30 and count <= 40|srv_count > 70 and srv_count <= 80)
+		P(count > 30 and count <= 40|srv_count > 80 and srv_count <= 90)
+		P(count > 30 and count <= 40|srv_count = 0)
+		P(count > 30 and count <= 40|srv_count > 100)
+		P(count > 40 and count <= 50|srv_count > 0 and srv_count <= 10)
+		P(count > 50 and count <= 60|srv_count > 10 and srv_count <= 20)
+		P(count > 50 and count <= 60|srv_count > 20 and srv_count <= 30)
+		P(count > 50 and count <= 60|srv_count > 30 and srv_count <= 40)
+		P(count > 50 and count <= 60|srv_count > 40 and srv_count <= 50)
+		P(count > 50 and count <= 60|srv_count > 50 and srv_count <= 60)
+		P(count > 50 and count <= 60|srv_count > 60 and srv_count <= 70)
+		P(count > 50 and count <= 60|srv_count > 70 and srv_count <= 80)
+		P(count > 50 and count <= 60|srv_count > 80 and srv_count <= 90)
+		P(count > 50 and count <= 60|srv_count = 0)
+		P(count > 50 and count <= 60|srv_count > 100)
+		P(count > 60 and count <= 70|srv_count > 0 and srv_count <= 10)
+		P(count > 60 and count <= 70|srv_count > 10 and srv_count <= 20)
+		P(count > 60 and count <= 70|srv_count > 20 and srv_count <= 30)
+		P(count > 60 and count <= 70|srv_count > 30 and srv_count <= 40)
+		P(count > 60 and count <= 70|srv_count > 40 and srv_count <= 50)
+		P(count > 60 and count <= 70|srv_count > 50 and srv_count <= 60)
+		P(count > 60 and count <= 70|srv_count > 60 and srv_count <= 70)
+		P(count > 60 and count <= 70|srv_count > 70 and srv_count <= 80)
+		P(count > 60 and count <= 70|srv_count > 80 and srv_count <= 90)
+		P(count > 60 and count <= 70|srv_count = 0)
+		P(count > 60 and count <= 70|srv_count > 100)
+		P(count > 70 and count <= 80|srv_count > 0 and srv_count <= 10)
+		P(count > 70 and count <= 80|srv_count > 10 and srv_count <= 20)
+		P(count > 70 and count <= 80|srv_count > 20 and srv_count <= 30)
+		P(count > 70 and count <= 80|srv_count > 30 and srv_count <= 40)
+		P(count > 70 and count <= 80|srv_count > 40 and srv_count <= 50)
+		P(count > 70 and count <= 80|srv_count > 50 and srv_count <= 60)
+		P(count > 70 and count <= 80|srv_count > 60 and srv_count <= 70)
+		P(count > 70 and count <= 80|srv_count > 70 and srv_count <= 80)
+		P(count > 70 and count <= 80|srv_count > 80 and srv_count <= 90)
+		P(count > 70 and count <= 80|srv_count = 0)
+		P(count > 70 and count <= 80|srv_count > 100)
+		P(count > 80 and count <= 90|srv_count > 0 and srv_count <= 10)
+		P(count > 80 and count <= 90|srv_count > 10 and srv_count <= 20)
+		P(count > 80 and count <= 90|srv_count > 20 and srv_count <= 30)
+		P(count > 80 and count <= 90|srv_count > 30 and srv_count <= 40)
+		P(count > 80 and count <= 90|srv_count > 40 and srv_count <= 50)
+		P(count > 80 and count <= 90|srv_count > 50 and srv_count <= 60)
+		P(count > 80 and count <= 90|srv_count > 60 and srv_count <= 70)
+		P(count > 80 and count <= 90|srv_count > 70 and srv_count <= 80)
+		P(count > 80 and count <= 90|srv_count > 80 and srv_count <= 90)
+		P(count > 80 and count <= 90|srv_count = 0)
+		P(count > 80 and count <= 90|srv_count > 100)
+		P(count = 0|srv_count > 0 and srv_count <= 10)
+		P(count = 0|srv_count > 10 and srv_count <= 20)
+		P(count = 0|srv_count > 20 and srv_count <= 30)
+		P(count = 0|srv_count > 30 and srv_count <= 40)
+		P(count = 0|srv_count > 40 and srv_count <= 50)
+		P(count = 0|srv_count > 50 and srv_count <= 60)
+		P(count = 0|srv_count > 60 and srv_count <= 70)
+		P(count = 0|srv_count > 70 and srv_count <= 80)
+		P(count = 0|srv_count > 80 and srv_count <= 90)
+		P(count = 0|srv_count = 0)
+		P(count = 0|srv_count > 100)
+		P(count = 100|srv_count > 10 and srv_count <= 20)
+		P(count = 100|srv_count > 20 and srv_count <= 30)
+		P(count = 100|srv_count > 30 and srv_count <= 40)
+		P(count = 100|srv_count > 40 and srv_count <= 50)
+		P(count = 100|srv_count > 50 and srv_count <= 60)
+		P(count = 100|srv_count > 60 and srv_count <= 70)
+		P(count = 100|srv_count > 70 and srv_count <= 80)
+		P(count = 100|srv_count > 80 and srv_count <= 90)
+		P(count = 100|srv_count = 0)
+		P(count = 100|srv_count > 100)
+	b. same_srv_rate
+6. srv_count
+	a. srv_diff_host_rate
+	b. dst_bytes
+		P(srv_count > 0 and srv_count <= 10|dst_bytes = 0)
+		P(srv_count > 0 and srv_count <= 10|dst_bytes > 0)
+		P(srv_count > 10 and srv_count <= 20|dst_bytes = 0)
+		P(srv_count > 10 and srv_count <= 20dst_bytes > 0)
+		P(srv_count > 20 and srv_count <= 30dst_bytes = 0)
+		P(srv_count > 20 and srv_count <= 30|dst_bytes > 0)
+		P(srv_count > 30 and srv_count <= 40dst_bytes = 0)
+		P(srv_count > 30 and srv_count <= 40|dst_bytes > 0)
+		P(srv_count > 40 and srv_count <= 50|dst_bytes = 0)
+		P(srv_count > 40 and srv_count <= 50|dst_bytes > 0))
+		P(srv_count > 50 and srv_count <= 60|dst_bytes = 0)
+		P(srv_count > 50 and srv_count <= 60|dst_bytes > 0)
+		P(srv_count > 60 and srv_count <= 70|dst_bytes = 0)
+		P(srv_count > 60 and srv_count <= 70|dst_bytes > 0)
+		P(srv_count > 70 and srv_count <= 80|dst_bytes = 0)
+		P(srv_count > 70 and srv_count <= 80|dst_bytes > 0)
+		P(srv_count > 80 and srv_count <= 90|dst_bytes = 0)
+		P(srv_count > 80 and srv_count <= 90|dst_bytes > 0)
+		P(srv_count = 0|dst_bytes = 0)
+		P(srv_count = 0|dst_bytes > 0)
+		P(srv_count = 100|dst_bytes = 0)
+		P(srv_count = 100|dst_bytes > 0)
 
-3. src_bytes - OK
-- src_bytes | srv_diff_host_rate
+// same goes for the rest
+// ** SAME RANGES FOR ALL RATES, _COUNTS
 
-4. dst_bytes - OK
-- dst_bytes | classification
-
-5. count - OK
-- count | srv_count
-- count | same_srv_rate
-
-6. srv_count - OK
-- srv_count | srv_diff_host_rate
-- srv_count | dst_bytes
-
-7. serror_rate - OK
+7. serror_rate
 - serror_rate | rerror_rate
 
-8. srv_serror_rate - OK
+8. srv_serror_rate
 - srv_serror_rate | serror_rate
 
-9. rerror_rate - OK
+9. rerror_rate
 - rerror_rate | src_bytes
 
-10. srv_rerror_rate - OK
+10. srv_rerror_rate
 - srv_serror_rate | rerror_rate
 - srv_rerror_rate | count
 - srv_rerror_rate | srv_serror_rate
 
-11. same_srv_rate - OK
+11. same_srv_rate
 - same_srv_rate | dst_bytes
 
-12. diff_srv_rate - OK
+12. diff_srv_rate
 - diff_srv_rate | same_srv_rate
 - diff_srv_rate | classification
