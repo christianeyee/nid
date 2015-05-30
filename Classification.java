@@ -23,7 +23,7 @@ public class Classification {
 	private static void count(Writer writer, String classification) {
 		Helper.write(writer, "--Classification = " + classification);
 		Helper.write(writer, "SELECT COUNT(*) FROM dataset\n" + 
-							 "WHERE classification = " + classification + ";");
+							 "WHERE classification = " + "'" + classification + "';");
 		Helper.bound(writer);
 	}
 
