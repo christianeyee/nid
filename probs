@@ -18,18 +18,26 @@ P(protocol_type='icmp' | logged_in='0')
 P(A|B, C, D, ...) = P(A|U)
 where U = B & C & D &...
 
-P(U) = count(B & C & D &...)
+P(U) = count(B & C & D &...) / count(everything)
 	- NO NEED TO DIVIDE BY ANYTHING
 	- NO QUERIES FOR THESE GENERATED
-P(A|U) = count(A & B & C & D &...)
+P(A & U) = count(A & B & C & D &...) / count(everything)
 	- NO NEED TO DIVIDE BY ANYTHING
 	- QUERIES FOR THESE ALREADY GENERATED
+THEREFORE:
+	P(A|U) = P(A & U) / P(U)
+	P(A|U) = [count(A & B & C & D &...)/count(everything)] / 
+			 [count(B & C & D &...)/count(everything)]
+
+			 *********** cancel count(everything) ***********
+
+		   = count(A & B & C & D &...) / count(B & C & D &...)
 
 
 1. classiffication
 	a. srv_diff_host_rate
 		P(smurf|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
-		P(smurf|srv_diff_host_rate >= 0 and srv_diff_host_rate < 1)
+		P(smurf|srv_diff_host_rate >= 0.5 and srv_diff_host_rate < 1)
 		P(smurf|srv_diif_host_rate = 0)
 		P(smurf|srv_diif_host_rate = 1)
 		P(normal|srv_diff_host_rate >  0 and srv_diff_host_rate < 0.5)
@@ -100,7 +108,7 @@ P(A|U) = count(A & B & C & D &...)
 		P(count > 0 and count <= 10|srv_count > 80 and srv_count <= 90)
 		P(count > 0 and count <= 10|srv_count = 0)
 		P(count > 0 and count <= 10|srv_count > 100)
-		P(count >10 and count <= 10|srv_count > 0 and srv_count <= 10)
+		P(count > 10 and count <= 10|srv_count > 0 and srv_count <= 10)
 		P(count > 10 and count <= 20|srv_count > 10 and srv_count <= 20)
 		P(count > 10 and count <= 20|srv_count > 20 and srv_count <= 30)
 		P(count > 10 and count <= 20|srv_count > 30 and srv_count <= 40)
@@ -199,8 +207,10 @@ P(A|U) = count(A & B & C & D &...)
 		P(count = 100|srv_count = 0)
 		P(count = 100|srv_count > 100)
 	b. same_srv_rate
+
 6. srv_count
 	a. srv_diff_host_rate
+	
 	b. dst_bytes
 		P(srv_count > 0 and srv_count <= 10|dst_bytes = 0)
 		P(srv_count > 0 and srv_count <= 10|dst_bytes > 0)
