@@ -22,13 +22,13 @@ public class SrvCount {
 			}
 			// for srv_count = 0
 			temp = "SELECT COUNT(*) from dataset\n" +
-				   "WHERE srv_count = 0\nAND";
+				   "WHERE srv_count = 0";
 			count(writer, temp + ";");
 			runThroughDstBytes(writer, temp + "\nAND ");
 			runThroughSrvDiffHostRates(writer, temp + "\nAND ");
 			// for srv_count > MAX
 			temp = "SELECT COUNT(*) from dataset\n" +
-				   "WHERE srv_count > " + countIntervals.get(countIntervals.size()-1) + "\nAND";
+				   "WHERE srv_count > " + countIntervals.get(countIntervals.size()-1);
 			count(writer, temp + ";");
 			runThroughDstBytes(writer, temp + "\nAND ");
 			runThroughSrvDiffHostRates(writer, temp + "\nAND ");

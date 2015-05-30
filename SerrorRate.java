@@ -44,7 +44,7 @@ public class SerrorRate {
 	private static void runThroughRerrorRates(Writer writer, String temp) {
 		String q;
 		// for rerror_rate = 0
-		q = "AND rerror_rate = 0;";
+		q = "rerror_rate = 0;";
 		Helper.write(writer, temp + q);
 		// for 0 < rerror_rate < 0.5
 		q = "rerror_rate > 0\n" +

@@ -48,7 +48,7 @@ public class DiffSrvRate {
 	private static void runThroughSameSrvRates(Writer writer, String temp) {
 		String q;
 		// for same_srv_rate = 0
-		q = "AND same_srv_rate = 0;";
+		q = "same_srv_rate = 0;";
 		Helper.write(writer, temp + q);
 		// for 0 < same_srv_rate < 0.5
 		q = "same_srv_rate > 0\n" +

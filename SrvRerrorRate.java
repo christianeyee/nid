@@ -54,7 +54,7 @@ public class SrvRerrorRate {
 	private static void runThroughSrvSerrorRate(Writer writer, String temp) {
 		String q;
 		// for srv_serror_rate = 0
-		q = "AND srv_serror_rate = 0;";
+		q = "srv_serror_rate = 0;";
 		Helper.write(writer, temp + q);
 		// for 0 < srv_serror_rate < 0.5
 		q = "srv_serror_rate > 0\n" +
@@ -94,7 +94,7 @@ public class SrvRerrorRate {
 	private static void runThroughRerrorRates(Writer writer, String temp) {
 		String q;
 		// for rerror_rate = 0
-		q = "AND rerror_rate = 0;";
+		q = "rerror_rate = 0;";
 		Helper.write(writer, temp + q);
 		// for 0 < rerror_rate < 0.5
 		q = "rerror_rate > 0\n" +

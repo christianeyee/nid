@@ -24,6 +24,7 @@ public class Helper {
 		try {
 			writer.write("\n");
 			writer.write(line);
+			writer.write("\n");
 		}
 		catch (Exception e) { e.printStackTrace(); }
 	}

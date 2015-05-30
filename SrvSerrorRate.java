@@ -44,7 +44,7 @@ public class SrvSerrorRate {
 	private static void runThroughSerrorRates(Writer writer, String temp) {
 		String q;
 		// for serror_rate = 0
-		q = "AND serror_rate = 0;";
+		q = "serror_rate = 0;";
 		Helper.write(writer, temp + q);
 		// for 0 < serror_rate < 0.5
 		q = "serror_rate > 0\n" +

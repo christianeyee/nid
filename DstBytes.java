@@ -31,12 +31,12 @@ public class DstBytes {
 	private static void runThroughDstBytes(Writer writer, String classification) {
 		q = "SELECT COUNT(*) FROM dataset" + "\n" + 
 			"WHERE dst_bytes = 0\n" +
-			"AND classification = " + classification + ";";
+			"AND classification = " + "'" + classification + "'" + ";";
 		Helper.write(writer, q);
 		///////////DstBytes > 0/////////////
 		q = "SELECT COUNT(*) FROM dataset" + "\n" + 
 			"WHERE dst_bytes > 0\n" +
-			"AND classification = " + classification + ";";
+			"AND classification = " + "'" + classification + "'" + ";";
 		Helper.write(writer, q);
 	}
 
