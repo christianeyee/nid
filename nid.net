@@ -1,0 +1,461 @@
+net
+{
+	propagationenginegenerator1791944048146838126L = "edu.ucla.belief.approx.BeliefPropagationSettings@36500958";
+	recoveryenginegenerator6944530267470113528l = "edu.ucla.util.SettingsImpl@40958c43";
+	node_size = (130 55);
+}
+
+node dst_bytes
+{
+	states = ("zero" "greater0" );
+	position = (15 -185);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	csitype = "unknown";
+	ID = "variable0";
+	ishiddenvariable = "false";
+	label = "dst_bytes";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node srv_rerror_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (387 -5);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "srv_rerror_rate";
+	diagnosistype = "AUXILIARY";
+}
+node serror_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (574 -212);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "serror_rate";
+	diagnosistype = "AUXILIARY";
+}
+node count
+{
+	states = ("greater0lesseq10" "greater10lesseq20" "greater20lesseq30" "greater30lesseq40" "greater40lesseq50" "greater50lesseq60" "greater60lesseq70" "greater70lesseq80" "greater80lesseq90" "zero" "greater100" );
+	position = (302 -74);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "count";
+	diagnosistype = "AUXILIARY";
+}
+node srv_diff_host_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (425 -256);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "srv_diff_host_rate";
+	diagnosistype = "AUXILIARY";
+}
+node diff_srv_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (250 -297);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "diff_srv_rate";
+	diagnosistype = "AUXILIARY";
+}
+node same_srv_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (200 -195);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "same_srv_rate";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node rerror_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (423 -157);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "rerror_rate";
+	diagnosistype = "AUXILIARY";
+}
+node srv_count
+{
+	states = ("greater0lesseq10" "greater10lesseq20" "greater20lesseq30" "greater30lesseq40" "greater40lesseq50" "greater50lesseq60" "greater60lesseq70" "greater70lesseq80" "greater80lesseq90" "zero" "greater100" );
+	position = (93 -35);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable2";
+	label = "srv_count";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node classification
+{
+	states = ("smurf" "normal" "neptune" "back" );
+	position = (223 -417);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable4";
+	label = "classification";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node src_bytes
+{
+	states = ("zero" "greater0" );
+	position = (465 -361);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	csitype = "unknown";
+	ID = "variable0";
+	ishiddenvariable = "false";
+	label = "src_bytes";
+	diagnosistype = "AUXILIARY";
+}
+node protocol
+{
+	states = ("icmp" "tcp" "udp" );
+	position = (30 -333);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable3";
+	label = "protocol";
+	DSLxSUBMODEL = "Root Submodel";
+	diagnosistype = "AUXILIARY";
+}
+node srv_serror_rate
+{
+	states = ("greater0less05" "greatereq05less1" "zero" "one" );
+	position = (539 -79);
+	excludepolicy = "include whole CPT";
+	ismapvariable = "false";
+	ID = "variable1";
+	label = "srv_serror_rate";
+	diagnosistype = "AUXILIARY";
+}
+potential ( dst_bytes | classification )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( srv_rerror_rate | count srv_serror_rate rerror_rate )
+{
+	data = ((((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)))
+		(((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))));
+}
+potential ( serror_rate | rerror_rate )
+{
+	data = ((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	));
+}
+potential ( count | same_srv_rate srv_count )
+{
+	data = (((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)));
+}
+potential ( srv_diff_host_rate | )
+{
+	data = (	0.5	0.5	0.0	0.0	);
+}
+potential ( diff_srv_rate | classification same_srv_rate )
+{
+	data = (((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)));
+}
+potential ( same_srv_rate | dst_bytes )
+{
+	data = ((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	));
+}
+potential ( rerror_rate | )
+{
+	data = (	0.5	0.5	0.0	0.0	);
+}
+potential ( srv_count | dst_bytes srv_diff_host_rate )
+{
+	data = (((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	0.0	)));
+}
+potential ( classification | src_bytes srv_diff_host_rate )
+{
+	data = (((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	))
+		((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)));
+}
+potential ( src_bytes | srv_diff_host_rate )
+{
+	data = ((	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	)
+		(	0.5	0.5	));
+}
+potential ( protocol | classification )
+{
+	data = ((	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	)
+		(	0.5	0.5	0.0	));
+}
+potential ( srv_serror_rate | serror_rate )
+{
+	data = ((	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	)
+		(	0.5	0.5	0.0	0.0	));
+}
